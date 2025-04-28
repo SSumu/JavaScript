@@ -1,0 +1,2 @@
+1. We can write JavaScript codes in the web browser's console and take the output. Console is used for the testing purposes.
+2. document.write('Sadeepal')  -> This command will rewrite the full document. The output will be shown in the page. This will clean the full document and then write it. document means that the document we have received. We can also write HTML codes inside this.
