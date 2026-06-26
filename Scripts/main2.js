@@ -208,7 +208,7 @@ length: 3
  * length: 6
  */
 
-let arr = [1, 2, 3, 4, 5, 6];
+// let arr = [1, 2, 3, 4, 5, 6];
 
 // filter -> let result = [2,4,6].map(el => el + 6)
 
@@ -223,10 +223,66 @@ let arr = [1, 2, 3, 4, 5, 6];
  */
 
 // reduce() method is also come with the array.
-let result = arr.reduce((pre, val) => {
-  return pre + val;
-});
-// previousValue is the first value of the array. currentValue is
+// let result = arr.reduce((pre, val) => {
+//   return pre + val; // Output is 21
+//   // return val; // Output is 6
+// });
+// previousValue is the previous value of the each element in the array. currentValue is the current value.
+// return pre + val; :- By adding the each currentValue to its previousValue, the total output value is 21.
+
+// console.log(result);
+// pre returns 1. When the first value in the arr was changed to 3, then it returns 3.
+
+// let result = arr.reduce((pre, val) => {
+//   return pre + val; // Output is 21
+//   // return val; // Output is 6
+// }, /*-1*/ -5); // -1 or -5 is the initial value
+// initialValue is taken as the previousValue for the first instance. So the -5 is the pre value. Then the currentValue is the first element(0 index value) of the array.
+
+// console.log(result);
+// Output is 20 for -1 and 16 for -5.
+
+// let arr = [1, 2, 3, 4, 5, 6];
+
+// let result = arr.reduce((pre, val) => {
+//   pre.push({
+//     eVal: val + 5 * 3,
+//     oVal: val,
+//   }); // Returning the object
+//   return pre;
+// }, []); // It can set the [] (empty array) as the initial value. Since the initial value is an [], output come as an array is included with objects.
+
+// console.log(result);
+// Output:-
+/**
+ * (6) [{…}, {…}, {…}, {…}, {…}, {…}]
+ * 0: {eVal: 16, oVal: 1}
+ * 1: {eVal: 17, oVal: 2}
+ * 2: {eVal: 18, oVal: 3}
+ * 3: {eVal: 19, oVal: 4}
+ * 4: {eVal: 20, oVal: 5}
+ * 5: {eVal: 21, oVal: 6}
+ * length: 6
+ */
+
+let arr = [1, 2, 3, 4, 5, 6];
+
+let result = arr.reduce((pre, val, index) => {
+  pre[`newObj${index + 1}`] = {
+    eVal: val + 5 * 3,
+    oVal: val,
+  }; // pre or the previousValue is an object because the initial value is an object.
+  return pre;
+}, {}); // It can set the {} (empty object) as the initial value.
 
 console.log(result);
-// pre returns 1. When the first value in the arr was changed to 3, then it returns 3.
+// Output:-
+/**
+ * {newObj1: {…}, newObj2: {…}, newObj3: {…}, newObj4: {…}, newObj5: {…}, …}
+ * newObj1: {eVal: 16, oVal: 1}
+ * newObj2: {eVal: 17, oVal: 2}
+ * newObj3: {eVal: 18, oVal: 3}
+ * newObj4: {eVal: 19, oVal: 4}
+ * newObj5: {eVal: 20, oVal: 5}
+ * newObj6: {eVal: 21, oVal: 6}
+ */
